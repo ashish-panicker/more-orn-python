@@ -39,7 +39,14 @@ class HashTable:
             self.size = new_size
             self.table = new_table
             logger.debug(f"new table: {new_table}")
-            
+    
+    def search(self, key):
+        """Search for key in hash table"""
+        index = self._hash(key)
+        for k, v in self.table[index]:
+            if k == key:
+                return v
+        return None
 
     def insert(self, key, value):
         """Insert the data into the hash table"""
